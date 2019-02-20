@@ -13,7 +13,8 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 ### Still to do:
 - user account required to login
 - various levels of permissions
-- layout of the pages, especially a more functional dashboard
+- pages layout
+- dashboard
 - search
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
 
