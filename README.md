@@ -35,7 +35,7 @@ Rough structure:
 
 The file database.php was not included, this is what it looks like:
 
-'$servername = "127.0.0.1";
+`$servername = "127.0.0.1";
 $username = "root";
 $password = $somepassword;
 $dbname = "mydb";
@@ -43,5 +43,4 @@ $dbname = "mydb";
 $connection = new mysqli ($servername, $username, $password, $dbname);
 if ($connection->connect_error){
 die("connection failed: " . $connection->connect_error);
-}
-'
+}`
