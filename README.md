@@ -23,7 +23,7 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 - logo.php is a partial; the top of each page with logo and menu.
 - database.php - the mySQLi connection
   
-  ```
+```
 $servername = "127.0.0.1";
 $username = "root";
 $password = $somepassword;
@@ -45,7 +45,4 @@ die("connection failed: " . $connection->connect_error);
 - all_organisations.php - summary of all organisations sorted alphabetically; edit/delete
 - all_people.php - sumary of all people alphabetically; edit/delete
 - organisation_profile.php is a little dashboard for each organisation
-
-#### The file database.php was not included, this is what it looks like:
-
 
