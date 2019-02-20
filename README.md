@@ -17,10 +17,11 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 - search
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
 
-###Rough structure:
+### Structure:
 
-- header.php is a partial; the top of each page with all the head stuff, Bootstrap includes, logo and menu also a little `SERVER_SOFTWARE` badge to make me happy when I see it. (don't ask).
-- database.php - variables regarding the mySQLi connection
+- header.php libraries included in <head> tags on each page etc.
+- logo.php is a partial; the top of each page with logo and menu.
+- database.php - variables regarding the mySQLi connection (See more below)
 
 - index.php - the dashboard with the shoutbox and "newsfeed", all the important info / stats will go here later.
 - add_organisation.php - forms to add new company
