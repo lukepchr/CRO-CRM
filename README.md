@@ -21,7 +21,19 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 
 - header.php libraries included in <head> tags on each page etc.
 - logo.php is a partial; the top of each page with logo and menu.
-- database.php - variables regarding the mySQLi connection (See more below)
+- database.php - the mySQLi connection
+  
+  ```
+$servername = "127.0.0.1";
+$username = "root";
+$password = $somepassword;
+$dbname = "mydb";
+
+$connection = new mysqli ($servername, $username, $password, $dbname);
+if ($connection->connect_error){
+die("connection failed: " . $connection->connect_error);
+}
+```
 
 - index.php - the dashboard with the shoutbox and "newsfeed", all the important info / stats will go here later.
 - add_organisation.php - forms to add new company
@@ -36,14 +48,4 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 
 #### The file database.php was not included, this is what it looks like:
 
-```
-$servername = "127.0.0.1";
-$username = "root";
-$password = $somepassword;
-$dbname = "mydb";
 
-$connection = new mysqli ($servername, $username, $password, $dbname);
-if ($connection->connect_error){
-die("connection failed: " . $connection->connect_error);
-}
-```
