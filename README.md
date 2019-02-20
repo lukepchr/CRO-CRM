@@ -33,3 +33,20 @@ Rough structure:
 - all_people.php - sumary of all people alphabetically; edit/delete
 - organisation_profile.php is a little dashboard for each organisation
 
+============
+database.php
+============
+
+<?php
+$servername = "127.0.0.1";
+$username = "root";
+$password = $somepassword;
+$dbname = "mydb";
+
+$connection = new mysqli ($servername, $username, $password, $dbname);
+if ($connection->connect_error){
+die("connection failed: " . $connection->connect_error);
+}
+
+?>
+
