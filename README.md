@@ -10,14 +10,6 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 - Post "global" messages to appear in the main dashboard.
 - Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile
 
-### Still to do:
-- user account required to login
-- various levels of permissions
-- pages layout
-- dashboard
-- search
-- personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
-
 ### Structure:
 
 - header.php libraries included in <head> tags on each page etc.
@@ -46,4 +38,12 @@ die("connection failed: " . $connection->connect_error);
 - all_organisations.php - summary of all organisations sorted alphabetically; edit/delete
 - all_people.php - sumary of all people alphabetically; edit/delete
 - organisation_profile.php is a little dashboard for each organisation
+
+### Still to do:
+- user account required to login
+- various levels of permissions
+- pages layout
+- dashboard
+- search
+- personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
 
