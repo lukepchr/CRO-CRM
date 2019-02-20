@@ -1,5 +1,5 @@
 # CRO
-CRO is a CRM system or in this case, Customer Relationships Organiser application for sales teams or account managers to store information regarding their work with customers. 
+CRO is a CRM system or in this case, Customer Relationships Organiser application for sales teams or account managers to store information regarding their work with customers.
 
 This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. I run it on Raspberry Pi accessed through SSH and FTP to resemble real deployment environment although when it's fully finished, I wish to make it available to others and e.g. include installer as in CMS systems and nice documentation.
 
@@ -8,7 +8,7 @@ The core functionality is already working:
 - Add, view, modify and remove employee profiles under these companies
 - Companies are identified by an account code (8 letters/numbers) which is usually handy for invoicing purposes, although when adding a new employee, company can be picked by a name from a list.
 - Post "global" messages to appear in the main dashboard.
-- Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile 
+- Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile
 
 Still to do:
 - user account required to login
@@ -37,7 +37,6 @@ Rough structure:
 database.php
 ============
 
-<?php
 $servername = "127.0.0.1";
 $username = "root";
 $password = $somepassword;
@@ -47,6 +46,3 @@ $connection = new mysqli ($servername, $username, $password, $dbname);
 if ($connection->connect_error){
 die("connection failed: " . $connection->connect_error);
 }
-
-?>
-
