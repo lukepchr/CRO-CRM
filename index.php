@@ -111,12 +111,15 @@
           }
           echo $row["time_created"]. "</i></div></small>
           <div 'card-body text-dark'>
-          <p class='card-text' style='margin: 10px 20px'>".$row["memo"]."</p>" .
 
-'          <a href="index.php?action=delete&id='.$row["id"].'"><button type="button" class="close" aria-label="Delete"  style="position: absolute; top:-1px; right: 3px;">
-  <span aria-hidden="true">&times;</span>
-</button> </a>';
-          echo "</div></div></small>";
+          <p class='card-text'
+            style='margin: 10px 20px'>".$row["memo"]."</p>" .
+          '<a href="index.php?action=delete&id='.$row["id"].'">
+          <button type="button" class="close" aria-label="Delete"
+            style="position: absolute; top:-1px; right: 3px; outline: none">
+          <span aria-hidden="true">&times;</span>
+            </button> </a>'.
+          "</div></div></small>";
     }
 
     }
