@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 
-  <?php include 'header.php';
-
 <?php
+include 'header.php';
 
 $accountname = $_POST['accountname'];
 $address = $_POST['address'];
@@ -17,10 +16,10 @@ $action = $_GET['action'];
 $id = $_GET["id"];
 ?>
 
-</head>
-<body>
 
-<div id="main" class="bg-light">
+<body class="bg-light">
+
+<div id="main">
   <?php include 'top.php';
   include "database.php";?>
 <div class="alert alert-info" role="alert">

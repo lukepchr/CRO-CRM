@@ -13,7 +13,7 @@
  ?>
 </head>
 
-<body>
+<body class="bg-light">
 
 <?php
   if($message<>"")
@@ -84,7 +84,7 @@
 
   <div class="form-group">
       <form id="newpost" class="form-group" action="index.php" method="POST">
-      <textarea rows="3" cols="50" name="post" class="form-control" ></textarea>
+      <textarea rows="3" cols="50" name="post" class="form-control" required ></textarea>
 
       <button type="submit" class="btn btn-primary mt-1 mb-3 align-right"><i class="fas fa-paper-plane"></i> Send</button>
   </div>
@@ -103,9 +103,10 @@
           $subresult = $connection->query($subsql);
           $row2 = $subresult->fetch_assoc();
 
-          echo '<div class ="card border-dark mb-3" style="box-shadow: 4px 4px 4px 2px rgba(0,0,0,0.15);">';
-          echo '<div class="card-header">';
-          echo "<small class='text-muted'><i>";
+          echo '<div class ="card border-dark mb-3"
+          style="box-shadow: 4px 4px 4px 2px rgba(0,0,0,0.15);">'.
+          '<div class="card-header">'."<small class='text-muted'><i>";
+
           if($row2['account_name'] <> ""){
             echo "A note regarding <a href='organisation_profile.php?id=".$row2['id']."'>".$row2['account_name']."</a>, posted ";
           }

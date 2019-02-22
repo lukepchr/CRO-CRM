@@ -1,6 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head> <?php include 'header.php' ?> </head>
+
+
+
+<!-- Using GET method, obtain ID of the company, this will be to fill the fields for editing. -->
+
+<?php
+
+if($_GET['id']){
+$id = $_GET['id'];
+
+
+require 'database.php';
+
+$sql = "SELECT * FROM person WHERE id =" . $id;
+
+$result = $connection->query($sql);
+
+if($result->num_rows>0){ // it's great but next time use the right method.
+  while($row = $result->fetch_assoc()){
+
+    $firstname = $row["first_name"];
+    $lastname = $row["last_name"];
+    $accountcode = $row["account_code"];
+    $position = $row["position"];
+    $email = $row["email"];
+    $phone = $row["phone"];
+
+  }
+}
+
+}
+else {
+  // do nothing!
+}
+?>
+
+
 <body class="bg-light">
 <div id="main">
   <?php include "top.php";
@@ -11,8 +48,9 @@
   <p>Individuals from all organisations.</p>
 </div>
 
-<div id="form_container" class="container">
+<div id="form_container" class="container row">
 
+<div class="col">
   <?php
 
 
@@ -22,7 +60,7 @@
 
   if ($result->num_rows>0){
     while($row = $result->fetch_assoc()){
-      echo $row["first_name"]. " " . $row["last_name"];
+      echo "<div id='p".$row['id']."'>". $row["first_name"]. " " . $row["last_name"]."</div>";
 
 
       $sql = "SELECT account_name FROM account WHERE account_code ='" . $row['account_code']. "';";
@@ -38,8 +76,11 @@ else{
   echo " (company missing)";
 }
 
-echo " <a href=edit_person.php?id=". $row["id"] . ">[edit]</a>";
-echo " <a href=person_changed.php?action=delete&id=".$row["id"].">[delete]</a></small><br>";
+echo " <a href=all_people.php?id=". $row["id"] . "><i class='fas fa-edit' style='position: absolute; right:0;'></i></a>";
+
+
+echo " <a href=person_changed.php?action=delete&id=".$row["id"]." class='removal'><i class='fas fa-trash-alt' style='position: absolute; right:1.5em;'></i>
+</a></small><br>";
 
 
 } // end of the associative fetch
@@ -52,10 +93,52 @@ echo " <a href=person_changed.php?action=delete&id=".$row["id"].">[delete]</a></
 
 
   ?>
-<a href="add_person.php"><button class="btn btn-primary mt-2">Add a new person</button></a>
+
+</div>
+<div class="col" id="rightscreen">
+
+
+<?php
+if ($_GET['id']){
+  include 'edit_person.php';
+}
+else{
+  include 'add_person.php';
+}
+?>
+
+</div>
 </div>
 </div>
 </body>
 
+<script><!-- pop the person name into the <span> tag in the headline. -->
+
+  let span = document.getElementById("person");
+  span.innerHTML= "<?php echo $firstname." ".$lastname; ?>";
+  </script>
+
+</script>
+
+<script> // for deleting people
+let locked = true;
+$(".removal").click(function(event){
+
+if (locked){
+event.preventDefault();
+
+if(confirm("Are you sure you would like to delete this person? (Ok to remove)")){
+  locked = false;
+  $(this).unbind('click').click();
+  $(this)[0].click();
+}
+else {
+  locked = true;
+}
+
+
+}
+});
+</script>
 
 </html>

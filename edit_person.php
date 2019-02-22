@@ -1,66 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head> <?php include 'header.php' ?> </head>
-<body class="bg-light">
-
-<div id="main" class="bg-light">
-  <?php include "top.php";
-        require 'database.php';
-        ?>
 
 
-<div class="alert alert-primary" role="alert">
-  <h4 class="alert-heading">Modify person's details...</h4>
-  <p>Please enter the details below and click submit to go ahead.</p>
-</div>
 
-
-<!-- GET the account code to look for -->
-
-<?php
-
-$id = $_GET['id'];
-
-require 'database.php';
-
-$sql = "SELECT * FROM person WHERE id =" . $id;
-
-$result = $connection->query($sql);
-
-if($result->num_rows>0){ // it's great but next time use the right method.
-  while($row = $result->fetch_assoc()){
-
-    $firstname = $row["first_name"];
-    $lastname = $row["last_name"];
-    $accountcode = $row["account_code"];
-    $position = $row["position"];
-    $email = $row["email"];
-    $phone = $row["phone"];
-
-  }
-}
-
-
-?>
-
-
-<form name = "edit_person" method="POST" action = "person_changed.php?action=edit&id=<?php echo $id; ?>">
 <div id="form_container" class="container">
-
+<h2>Editing <span id="person">a person</span></h2>
+<form name = "edit_person" method="POST" action = "person_changed.php?action=edit&id=<?php echo $id; ?>">
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-6">
     <label for ="firstname">First name:</label>
 <input name="firstname" value="<?php echo $firstname ?>" class="form-control" id="firstname" type="text" required>
-</div> <div class="form-group col-md-4">
+</div> <div class="form-group col-md-6">
   <label for ="lastname">Last name:</label>
 <input name="lastname" value="<?php echo $lastname ?>" class="form-control" id="lastname" type="text" required>
 </div></div>
 <div class="form-row">
-<div class = "form-group col-md-4">
+<div class = "form-group col-md-6">
   <label for ="position">Position:</label>
 <input name="position" value="<?php echo $position ?>" class="form-control" id="position" type="text" required>
 </div>
-<div class = "form-group col-md-4">
+<div class = "form-group col-md-6">
 
 
   <label for ="accountcode">Account:</label>
@@ -89,19 +46,20 @@ if($result->num_rows>0){ // it's great but next time use the right method.
 </div></div>
 
 <div class="form-row">
-  <div class = "form-group col-md-4">
+  <div class = "form-group col">
   <label for ="email">E-mail address:</label>
 <input name="email" value="<?php echo $email ?>" class="form-control" id="email" type="email" required>
-</div><div class = "form-group col-md-4">  <label for ="phone">Phone:</label>
+</div><div class = "form-group col">  <label for ="phone">Phone:</label>
 <input name="phone" value="<?php echo $phone ?>" class="form-control" id="phone" type="number" required>
 </div></div>
 <input type="submit" class="btn btn-primary" id="button">
-<a href="all_people.php" class="btn btn-warning" id="button">Cancel</a>
-</div>
+<a href="all_people.php"<button class="btn btn-warning" id="clear form">Cancel</button></a>
+
 
 
 
 </form>
+</div>
 
 <script>
 $("document").ready(function(){
@@ -109,13 +67,3 @@ $("document").ready(function(){
   x.val("<?php echo $accountcode ?>");
 })
 </script>
-
-
-
-</div>
-</body>
-
-
-
-
-</html>

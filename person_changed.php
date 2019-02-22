@@ -29,6 +29,7 @@ VALUES ('$firstname', '$lastname', '$accountcode', '$position', '$email', '$phon
 <body>
 <div id="main" >
   <?php
+  include 'top.php';
   require 'database.php'; ?>
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Add new person to a company...</h4>
@@ -97,11 +98,14 @@ else {
   echo "ERROR, no action specified. What did you want to do?";
 }
 
-  ?></p>
+  ?>
+
+
+</p>
+<a href="all_people.php"><button class="btn btn-primary">OK</button></a>
+
 
 </div>
-
-<div class="container ml-5"> Great job so far. Do you fancy <a href="add_person.php">adding anyone</a> or do you want to <a href="all_people.php">get back to the main screen?</a>?</div>
 
 
 </div>

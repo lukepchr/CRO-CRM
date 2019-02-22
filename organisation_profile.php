@@ -4,20 +4,21 @@
 
 <?php include 'header.php';?>
 </head>
-<body>
+<body class="bg-light">
 
 
 <?php
 $success = $_GET['success'];
 $note = $_GET['note'];
 
+
 if($note){
-  if($success) echo "<div class='alert-success'>Success, a message was $note. </div>";
-  else echo "<div class='alert-warning'>Error! Message not $note!</div>";
+  if($success) echo "<div class='alert-success' id='overlay'>Success, a message was $note. </div>";
+  else echo "<div class='alert-warning' id='overlay'>Error! Message not $note!</div>";
 }
 ?>
 <!---->
-<div id="main" class="bg-light">
+<div id="main">
 <?php include "top.php";
 include 'database.php'; ?>
 <div class="alert alert-info" role="alert">
@@ -25,10 +26,9 @@ include 'database.php'; ?>
   <p></p>
 </div>
 
-<div id="form_container" class="d-flex flex-nowrap ml-5 ">
-      <div id="details" class="col-md-2" style="overflow-wrap: break-word; text-align: justify; margin-right: 10px;">
+<div id="form_container" class="row">
+      <div id="details" class="col-2 ml-5" style="overflow-wrap: break-word; text-align: justify; margin-right: 10px;">
       <h3>Details</h3>
-
 
         <?php
 
@@ -46,12 +46,11 @@ include 'database.php'; ?>
       echo "<code>". $keepcode . "</code><br><b>";
       echo $name . "</b><br>";
       echo $row[address] . "<br>";
-      echo $row[city] . "<br>";
-      echo $row[postcode] . "<br>";
-      echo $row[website] . "<br>";
-      echo $row[phone] . "<br>";
-
-      echo "<a href='edit_organisation?id=".$row[id]."' class='btn btn-outline-success my-2 my-sm-0'>
+      echo $row[city] . ", ";
+      echo $row[postcode] . "<br><hr>";
+      echo '<div class="container mb-2"><i class="fas fa-globe-europe"></i> '.$row[website] . "<br>";
+      echo '<i class="fas fa-phone"></i> '.$row[phone] . "<br></div>";
+      echo "<a href='edit_organisation?id=".$row[id]."' class='btn btn-block btn-outline-success my-2 my-sm-0'>
       Edit</a>";
           }
           else {
@@ -62,11 +61,7 @@ include 'database.php'; ?>
       ?>
     </div>
 
-
-  <div id="allposts"  class="flex-row flex-nowrap align-flex-start">
-
-<div id="flex" class="d-flex flex-nowrap col-md-3" >
-    <div id="employees" class="container">
+    <div id="employees" class="col">
 <h3>Employees</h3>
 <?php
 
@@ -88,15 +83,21 @@ else {
 }
 ?> </div>
 
-<div id="shoutbox" class="ml-5 mb-4">
+
+  <div id="allposts"  class="col">
+
+
+<div id="shoutbox" class="container">
     <form id="newpost" action='index.php?<?php echo"
-    return=$keepid&account_code=$keepcode"?>' method="POST"><h3>News feed</h3>
-    <div id="textbox"><textarea rows="5" cols="50" name="post" placeholder="Write a note here"></textarea><br>
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0" style="display: inline; align: right;" value="Send"></div></form></div>
+    return=$keepid&account_code=$keepcode"?>' method="POST">
+    <h3>News feed</h3><div id="textbox"><textarea rows="5" cols="50"
+      name="post" placeholder="Write a note here"></textarea><br>
+    <input type="submit" class="btn btn-outline-success my-2 my-sm-0"
+    style="display: inline; align: right;" value="Send"></div></form></div>
 
-  </div>
 
-  <div id="allposts" class="container ml-5 mb-4 col-md-5">
+
+  <div id="renderposts" class="container">
   <!--end of shoutbox
   // Render all the posts regarding this place.-->
   <?php
@@ -106,17 +107,32 @@ else {
 
     if ($result->num_rows>0){
       while($row = $result->fetch_assoc()){
+
         $acc= $row['account_code'];
         $subsql = "SELECT * FROM account WHERE account_code = '$acc';";
         $subresult = $connection->query($subsql);
         $row2 = $subresult->fetch_assoc();
 
-        echo '<div style="border: 1px solid #999; padding: 20px; text-align: justify; position: relative; margin: 10px auto; box-shadow: 4px 4px 4px 2px rgba(0,0,0,0.15);">';
-        echo "<small class='text-muted' style='position: absolute; top: 2px; left:5px;'><i>";
+        echo '<div class ="card border-dark mb-3"
+        style="box-shadow: 4px 4px 4px 2px rgba(0,0,0,0.15);">'.
+        '<div class="card-header">'."<small class='text-muted'><i>";
 
-        echo $row["time_created"]. "</i></small><p style='margin: 10px 20px'>".$row["memo"]."</p>" .
-        '<small><p class="text-muted" style="position: absolute; top:2px; right: 2px;"><a href="index.php?return='.$row2["id"].'&action=delete&id='.$row['id'].'">[x]</a></p></small>'  ;
-        echo "</div>";}
+        if($row2['account_name'] <> ""){
+          echo "Note posted on ";
+        }
+        echo $row["time_created"]. "</i></div></small>
+        <div 'card-body text-dark'>
+
+        <p class='card-text'
+          style='margin: 10px 20px'>".$row["memo"]."</p>" .
+        '<a href="index.php?action=delete&id='.$row["id"].'">
+        <button type="button" class="close" aria-label="Delete"
+          style="position: absolute; top:-1px; right: 3px; outline: none">
+        <span aria-hidden="true">&times;</span>
+          </button> </a>'.
+        "</div></div></small>";
+
+      }
   }
 
 
@@ -127,7 +143,8 @@ else {
       $connection->close();
 
 
-    ?> </div></div></div>
+    ?> </div></div>
+  </div>
 
 
 
