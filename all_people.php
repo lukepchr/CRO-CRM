@@ -48,7 +48,7 @@ else {
   <p>Individuals from all organisations.</p>
 </div>
 
-<div id="form_container" class="container row">
+<div id="form_container" style="line-height: 1.5em;" class="container row">
 
 <div class="col">
   <?php
@@ -60,7 +60,7 @@ else {
 
   if ($result->num_rows>0){
     while($row = $result->fetch_assoc()){
-      echo "<div id='p".$row['id']."'>". $row["first_name"]. " " . $row["last_name"]."</div>";
+      echo "<div style='display: inline;' id='p".$row['id']."'>". $row["first_name"]. " " . $row["last_name"]."</div>";
 
 
       $sql = "SELECT account_name FROM account WHERE account_code ='" . $row['account_code']. "';";
@@ -76,11 +76,12 @@ else{
   echo " (company missing)";
 }
 
-echo " <a href=all_people.php?id=". $row["id"] . "><i class='fas fa-edit' style='position: absolute; right:0;'></i></a>";
+echo "</small> <a href=all_people.php?id=". $row["id"] . "><i class='fas fa-edit'></i></a>";
 
 
-echo " <a href=person_changed.php?action=delete&id=".$row["id"]." class='removal'><i class='fas fa-trash-alt' style='position: absolute; right:1.5em;'></i>
-</a></small><br>";
+echo " <a href=person_changed.php?action=delete&id=".$row["id"]." class='removal'>
+<i class='fas fa-trash-alt'></i>
+</a><br>";
 
 
 } // end of the associative fetch
