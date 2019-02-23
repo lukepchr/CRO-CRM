@@ -15,7 +15,7 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 - header.php libraries included in <head> tags on each page etc.
 - logo.php is a partial; the top of each page with logo and menu.
 - database.php - the mySQLi connection
-  
+
 ```
 $servername = "127.0.0.1";
 $username = "root";
@@ -46,4 +46,3 @@ die("connection failed: " . $connection->connect_error);
 - dashboard
 - search
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
-
