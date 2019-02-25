@@ -89,20 +89,16 @@ else {
   echo "sorry, not sure what to do.";
 }
 
-// below another function with MODIFY and DELETE.
 
- ?></p>
-
+?>
+</p>
 
 </div>
 
 <div> Great job so far. Do you fancy <a href="add_person.php">adding anyone else</a> or do you want to <a href="all_organisations.php">get back to the main screen</a>?</div>
 
-
 </div>
 
 </body>
-
-
 
 </html>

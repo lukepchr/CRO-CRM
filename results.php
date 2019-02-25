@@ -18,24 +18,25 @@
         </div>
 
 
-        <!-- here we go.  -->
-
         <?php
+
+        $flag = false; // this will be to inform the user of unsuccessful search
+
+
 // search for Companies
 
-
-  $sql = "SELECT * FROM account WHERE account_name LIKE '%" . $_GET['search'] . "%' ORDER BY account_name ASC;";
+  $sql = "SELECT * FROM account WHERE CONCAT(account_name, address, account_code) LIKE '%" . $_GET['search'] . "%' ORDER BY account_name ASC;";
 
   $result = $connection->query($sql);
 
   if ($result->num_rows>0){
+    $flag=true;
     echo "<div class='container'><h5>Companies</h5>";
     while($row = $result->fetch_assoc()){
-      echo
-      "<a href='organisation_profile.php?id=".$row['id']."'>".
+      echo "<a href='organisation_profile.php?id=".$row['id']."'>".
       $row["account_name"]. "</a> " .
       "<small class='text-muted'> in " . $row["city"] .
-" <small><kbd>".$row["account_code"] . "</kbd></small> " ;
+      " <small><kbd>".$row["account_code"] . "</kbd></small> " ;
       echo " <a href=edit_organisation.php?id=". $row["id"] . ">[edit]</a>";
       echo " <a href=org_changed.php?action=delete&id=".$row["id"].">[delete]</a></small><br>";
     }
@@ -43,13 +44,12 @@
   }
 
 
-
 // search for people
           $sql = "SELECT * FROM person WHERE CONCAT(first_name, last_name) LIKE '%". $_GET['search']."%' ORDER BY last_name ASC;";
-
           $result = $connection->query($sql);
 
           if ($result->num_rows>0){
+            $flag=true;
             echo "<div class='container mt-5'>";
             echo "<h5>People</h5>";
             while($row = $result->fetch_assoc()){
@@ -77,16 +77,18 @@ echo "</small> <a href=all_people.php?id=". $row["id"] . "><i class='fas fa-edit
 </a><br>";
 
 
-
-
-
-            }
+          }
               echo "</div>";
           }
 
 
 
             $connection->close();
+
+if($flag==false){
+
+  echo "<div class='container'><h5>Sorry, no records were found.</h5></div>";
+}
 
 ?>
 
