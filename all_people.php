@@ -128,16 +128,14 @@ $(".removal").click(function(event){
 if (locked){
 event.preventDefault();
 
-if(confirm("Are you sure you would like to delete this person? (Ok to remove)")){
-  locked = false;
-  $(this).unbind('click').click();
-  $(this)[0].click();
-}
-else {
-  locked = true;
-}
-
-
+  if(confirm("Are you sure you would like to delete this person? (Ok to remove)")){
+    locked = false;
+    $(this).unbind('click').click();
+    $(this)[0].click();
+  }
+  else {
+    locked = true;
+  }
 }
 });
 </script>

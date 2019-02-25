@@ -10,17 +10,19 @@ echo "<small><kbd>  Hello world from ".$_SERVER['SERVER_SOFTWARE']."</kbd></smal
 
 ?>
 
-<nav class="mt-1 mb-1">
+<nav class="mt-1 mb-1 row col-md-6">
 
-        <a class="btn btn-primary" href="index.php"><i class="far fa-newspaper"></i> News</a>
+    <a class="btn btn-primary ml-1" href="index.php"><i class="far fa-newspaper"></i> News</a>
 
-    <a class="btn btn-primary" href="all_organisations.php"><i class="fas fa-building"></i> Organisations</a>
-  <a class="btn btn-primary" href="all_people.php"><i class="fas fa-users"></i> People</a>
+    <a class="btn btn-primary ml-1" href="all_organisations.php"><i class="fas fa-building"></i> Organisations</a>
+
+    <a class="btn btn-primary ml-1" href="all_people.php"><i class="fas fa-users"></i> People</a>
+
 </ul>
+<div class="search-container d-inline-flex col-md-4 ml-1">
+  <form action="results.php">
+    <input type="text" class="h-100 pl-2" placeholder = "search" name="search" required>
+    <button type="submit" <i class="fa fa-search"></i></button>
+  </form>
+</div>
 </nav>
-<script>
-$('#myTab a').on('click', function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
-</script>
