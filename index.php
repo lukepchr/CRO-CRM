@@ -16,6 +16,10 @@
 <body class="bg-light">
 
 <?php
+
+
+
+
   if($message<>"")
   {
     $sql = "INSERT INTO posts ".
