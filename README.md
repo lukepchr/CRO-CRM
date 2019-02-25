@@ -6,6 +6,7 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 ### The core functionality is already working:
 - Add, view, modify and remove company profiles with contact details, notes and employees
 - Add, view, modify and remove employee profiles under these companies
+- Search for accounts and people
 - Companies are identified by an account code (8 letters/numbers) which is usually handy for invoicing purposes, although when adding a new employee, company can be picked by a name from a list.
 - Post "global" messages to appear in the main dashboard.
 - Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile
@@ -38,11 +39,11 @@ die("connection failed: " . $connection->connect_error);
 - all_organisations.php - summary of all organisations sorted alphabetically; edit/delete
 - all_people.php - sumary of all people alphabetically; edit/delete
 - organisation_profile.php is a little dashboard for each organisation
+- results.php is the list of companies or people who matched the search query.
 
 ### Still to do:
 - user account required to login
 - various levels of permissions
 - pages layout
 - dashboard
-- search
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
