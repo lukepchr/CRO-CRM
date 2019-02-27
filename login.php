@@ -51,9 +51,9 @@ else {
           echo
           '
           <div class="alert alert-primary mt-6 display-block" role="alert">
-          <h4 class="alert-heading">Logged-in!</h4>
+          <h4 class="alert-heading">Welcome!</h4>
           <div>
-          <p>Go to the index page to begin.</p>
+          <p>You are successfully logged in. Go to the index page to begin or choose a tab above.</p>
 
           <a href="index.php" class="btn btn-primary">Ok</a>
 
