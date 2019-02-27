@@ -6,8 +6,11 @@
 </div>
 
 <?php
-echo "<small><kbd>  Hello world from ".$_SERVER['SERVER_SOFTWARE']."</kbd></small>";
-
+$usr= $_SESSION['user'];
+echo "<div><small><kbd>  Hello world from ".$_SERVER['SERVER_SOFTWARE']."</kbd></small></div>";
+if($usr){
+echo "<kbd>Logged in as $usr</kbd> <kbd class='ml-1'><a href='login.php?action=bye'> <i class='fas fa-sign-out-alt'></i> log out </a> </kbd>";
+}
 ?>
 
 <nav class="mt-1 mb-1 row col-md-6">
