@@ -1,3 +1,8 @@
+<?php session_start();
+if(!$_SESSION[active]){
+  include 'login.php';
+  die();
+}?>
 <!doctype html>
 <html lang="en">
 <head>

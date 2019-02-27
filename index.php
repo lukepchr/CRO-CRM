@@ -1,8 +1,17 @@
+<?php session_start();
+if(!$_SESSION[active]){
+  include 'login.php';
+  die();
+}?>
 <!doctype html>
 <html lang="en">
 <head>
 
-<?php include 'header.php';
+<?php
+
+
+
+include 'header.php';
 
   require 'database.php';
   $message = $_POST["post"];
@@ -16,8 +25,6 @@
 <body class="bg-light">
 
 <?php
-
-
 
 
   if($message<>"")

@@ -1,6 +1,4 @@
-<?php
-  session_start();
-?>
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 <header>
@@ -38,7 +36,8 @@ include 'header.php';
 
         if($connection->query($sql)->fetch_object()->user){
 
-          $_SESSION['active'] = true;
+          $_SESSION['active'] = 'true';
+          $_SESSION['user']= $login;
           echo
               '<div class="alert alert-success" role="alert">
               <h4 class="alert-heading">Log-in</h4>
