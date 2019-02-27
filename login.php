@@ -1,6 +1,4 @@
-<?php session_start()
-$expireAfter = 30;
-
+<?php session_start();
 ?>
 <!doctype html>
 <html lang="en">
