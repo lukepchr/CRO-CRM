@@ -16,14 +16,15 @@
     include 'header.php';
     require 'database.php';
 
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $accountcode = $_POST['accountcode'];
-    $position = $_POST['position'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $action = $_GET['action'];
-    $id = $_GET["id"];
+    // pick up all the inputs from POST/GET and escape the strings.
+    $firstname = $connection->real_escape_string ($_POST['firstname']);
+    $lastname = $connection->real_escape_string ($_POST['lastname']);
+    $accountcode = $connection->real_escape_string ($_POST['accountcode']);
+    $position = $connection->real_escape_string ($_POST['position']);
+    $email = $connection->real_escape_string ($_POST['email']);
+    $phone = $connection->real_escape_string ($_POST['phone']);
+    $action = $connection->real_escape_string ($_GET['action']);
+    $id = $connection->real_escape_string ($_GET["id"]);
 
     if ($action == "add"){
 

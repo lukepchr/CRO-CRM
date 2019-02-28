@@ -16,10 +16,11 @@ if(!$_SESSION[active]){
   <?php
         include 'top.php';
         require 'database.php';
+        $search = $_GET['search'];
         ?>
 
         <div class="alert alert-primary" role="alert">
-          <h4 class="alert-heading">Search results for <?php echo $_GET['search']; ?></h4>
+          <h4 class="alert-heading">Search results for <?php echo $search; ?></h4>
         </div>
 
 
@@ -30,7 +31,8 @@ if(!$_SESSION[active]){
 
 // search for Companies
 
-  $sql = "SELECT * FROM account WHERE CONCAT(account_name, address, account_code) LIKE '%" . $_GET['search'] . "%' ORDER BY account_name ASC;";
+  $search = $connection->real_escape_string ($search);
+  $sql = "SELECT * FROM account WHERE CONCAT(account_name, address, account_code) LIKE '%" . $search . "%' ORDER BY account_name ASC;";
 
   $result = $connection->query($sql);
 

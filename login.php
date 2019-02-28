@@ -25,8 +25,8 @@ else {
 
 
     include 'database.php';
-    $login = $_POST['login'];
-    $password = $_POST['password'];
+    $login = $connection->real_escape_string($_POST['login']);
+    $password = $connection->real_escape_string($_POST['password']);
 
     if($login AND $password){
     // check login and password with the database.

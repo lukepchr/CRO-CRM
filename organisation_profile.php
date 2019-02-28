@@ -32,7 +32,7 @@ include 'database.php'; ?>
 
         <?php
 
-        $id = $_GET["id"];
+        $id = $connection->real_escape_string($_GET["id"]);
         $sql = "SELECT * FROM account WHERE id = '$id'";
         $result = $connection->query($sql);
         $name; $keepcode; $keepid;

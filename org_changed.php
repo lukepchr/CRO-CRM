@@ -5,15 +5,15 @@
 <?php
 include 'header.php';
 
-$accountname = $_POST['accountname'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$postcode = $_POST['postcode'];
-$website = $_POST['website'];
-$phone = $_POST['phone'];
-$accountcode = $_POST['accountcode'];
-$action = $_GET['action'];
-$id = $_GET["id"];
+$accountname = $connection->real_escape_string($_POST['accountname']);
+$address = $connection->real_escape_string($_POST['address']);
+$city = $connection->real_escape_string($_POST['city']);
+$postcode = $connection->real_escape_string($_POST['postcode']);
+$website = $connection->real_escape_string($_POST['website']);
+$phone = $connection->real_escape_string($_POST['phone']);
+$accountcode = $connection->real_escape_string($_POST['accountcode']);
+$action = $connection->real_escape_string($_GET['action']);
+$id = $connection->real_escape_string($_GET["id"]);
 ?>
 
 
