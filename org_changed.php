@@ -4,7 +4,9 @@
 
 <?php
 include 'header.php';
+include 'database.php';
 
+if($_POST['accountname'] && $_POST['accountcode']){
 $accountname = $connection->real_escape_string($_POST['accountname']);
 $address = $connection->real_escape_string($_POST['address']);
 $city = $connection->real_escape_string($_POST['city']);
@@ -12,8 +14,13 @@ $postcode = $connection->real_escape_string($_POST['postcode']);
 $website = $connection->real_escape_string($_POST['website']);
 $phone = $connection->real_escape_string($_POST['phone']);
 $accountcode = $connection->real_escape_string($_POST['accountcode']);
+}
+
 $action = $connection->real_escape_string($_GET['action']);
+if($action!="add"){
 $id = $connection->real_escape_string($_GET["id"]);
+}
+
 ?>
 
 
@@ -94,8 +101,6 @@ else {
 </p>
 
 </div>
-
-<div> Great job so far. Do you fancy <a href="add_person.php">adding anyone else</a> or do you want to <a href="all_organisations.php">get back to the main screen</a>?</div>
 
 </div>
 

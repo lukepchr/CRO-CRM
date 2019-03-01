@@ -1,19 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head> <?php include 'header.php' ?> </head>
-
-<body class="bg-light">
-
 <div id="main" class="bg-light">
-  <?php include "top.php";
+  <?php
         require 'database.php';
         ?>
-<div class="alert alert-primary" role="alert">
-  <h4 class="alert-heading">Modify organisation details...</h4>
-  <p>Please enter the details below and click submit to go ahead.</p>
-</div>
+<h2>Modify <span id="organisation">organisation details</span>...</h2>
 
-<div class="container ml-5">
+
+<div class="container">
 <!-- GET the account code to look for -->
 
 <?php
@@ -47,26 +39,45 @@ if($result->num_rows>0){ // it's great but next time use the right method.
 <form name = "edit_person" method="POST" action = "org_changed.php?action=edit&id=<?php echo $id; ?>">
 <div id="form_container">
 
-  <label for ="accountname">Organisation name:</label>
-<input name="accountname" value="<?php echo $accountname ?>" class="form-control" id="accountname" type="text" required>
+  <div class="form-row">
+    <div class="form-group col">
+    <label for ="account_name">Organisation name:</label>
+    <input name="accountname" value="<?php echo $accountname;?>" class="form-control" id="accountname" type="text" required>
+    </div>
 
-  <label for ="address">Street address:</label>
-<input name="address" value="<?php echo $address ?>" class="form-control" id="address" type="text" required>
+    <div class="form-group col">
+    <label for ="accountcode">Account_code:</label>
+    <input name="accountcode"  value="<?php echo $accountcode;?>"  class="form-control" id="accountcode" type="text" required>
+    </div>
+  </div>
 
-  <label for ="city">City:</label>
-<input name="city" value="<?php echo $city ?>" class="form-control" id="city" type="text" required>
+  <div class="form-row">
+      <div class="form-group col">
+      <label for ="address">Street address:</label>
+      <input name="address"  value="<?php echo $address;?>"  class="form-control" id="address" type="text" required>
+      </div>
+  </div>
 
-  <label for ="postcode">Postcode:</label>
-<input name="postcode" value="<?php echo $postcode ?>" class="form-control" id="postcode" type="text" required>
-
-  <label for ="website">Website:</label>
-<input name="website" value="<?php echo $website ?>" class="form-control" id="website" type="text" required>
-
-  <label for ="phone">Phone:</label>
-<input name="phone" value="<?php echo $phone ?>" class="form-control" id="phone" type="number" required>
-
-<label for ="accountcode">Account code:</label>
-<input name="accountcode" value="<?php echo $accountcode ?>" class="form-control" id="accountcode" type="text" required>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for ="city">City:</label>
+      <input name="city"  value="<?php echo $city;?>"  class="form-control" id="city" type="text" required>
+    </div>
+    <div class="form-group col">
+      <label for ="postcode">Postcode:</label>
+      <input name="postcode"  value="<?php echo $postcode;?>" class="form-control" id="postcode" type="text" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for ="website">Website:</label>
+      <input name="website"  value="<?php echo $website;?>"  class="form-control" id="email" type="text" required>
+    </div>
+    <div class="form-group col">
+      <label for ="phone">Phone:</label>
+      <input name="phone"  value="<?php echo $phone;?>"  class="form-control" id="phone" type="number" required>
+    </div>
+  </div>
 
 </div>
 
@@ -77,8 +88,3 @@ if($result->num_rows>0){ // it's great but next time use the right method.
 </form>
 </div>
 </div>
-</body>
-
-
-
-</html>

@@ -7,7 +7,6 @@ if(!$_SESSION[active]){
 <html lang="en">
 <head> <?php include 'header.php' ?> </head>
 <body class="bg-light">
-<div id="main" class="bg-light">
   <?php include "top.php";
         require 'database.php';
         ?>
@@ -15,6 +14,10 @@ if(!$_SESSION[active]){
   <h4 class="alert-heading">Contacts book</h4>
   <p>All organisations</p>
 </div>
+<div id="main" class="container row">
+
+<div id="leftscreen" class="col">
+
 
 <div id="form_container" class="container">
 
@@ -32,8 +35,8 @@ if(!$_SESSION[active]){
       $row["account_name"]. "</a> " .
       "<small class='text-muted'> in " . $row["city"] .
 " <small><kbd>".$row["account_code"] . "</kbd></small> " ;
-      echo " <a href=edit_organisation.php?id=". $row["id"] . ">[edit]</a>";
-      echo " <a href=org_changed.php?action=delete&id=".$row["id"].">[delete]</a></small><br>";
+      echo " </small> <a href=all_organisations.php?id=". $row["id"] . "><i class='fas fa-edit'></i></a>";
+      echo " <a href=org_changed.php?action=delete&id=".$row["id"]." class='removal'><i class='fas fa-trash-alt'></i></a></small><br>";
     }
   }
   else {
@@ -49,7 +52,52 @@ if(!$_SESSION[active]){
 </div>
 
 </div>
+
+<div class="col" id="rightscreen">
+
+
+<?php
+if ($_GET['id']){
+  include 'edit_organisation.php';
+}
+else{
+  include 'add_organisation.php';
+}
+?>
+
+</div>
+
+</div>
+
 </body>
+
+
+<script><!-- pop the org name into the <span> tag in the headline. -->
+
+  let span = document.getElementById("organisation");
+  span.innerHTML= "<?php echo $accountname; ?>";
+  </script>
+
+</script>
+
+<script> // for deleting people
+let locked = true;
+$(".removal").click(function(event){
+
+if (locked){
+event.preventDefault();
+
+  if(confirm("Are you sure you would like to delete this organisation? (Ok to remove)")){
+    locked = false;
+    $(this).unbind('click').click();
+    $(this)[0].click();
+  }
+  else {
+    locked = true;
+  }
+}
+});
+</script>
 
 
 </html>

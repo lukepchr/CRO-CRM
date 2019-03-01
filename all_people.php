@@ -82,9 +82,10 @@ else{
   echo " (company missing)";
 }
 
+// display the Edit icon
 echo "</small> <a href=all_people.php?id=". $row["id"] . "><i class='fas fa-edit'></i></a>";
 
-
+// display the Delete icon
 echo " <a href=person_changed.php?action=delete&id=".$row["id"]." class='removal'>
 <i class='fas fa-trash-alt'></i>
 </a><br>";
