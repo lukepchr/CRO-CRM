@@ -1,7 +1,7 @@
 
 <div class="container">
 <h2>Add a new person</h2>
-<form name = "new_person" method="POST" action = "person_changed.php?action=add">
+<form name = "new_person" method="POST" action = "all_people.php?action=add">
 <div id="form_container">
 
 <div class="form-row">

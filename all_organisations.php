@@ -92,9 +92,7 @@ elseif($action== "delete"){
     }
 
 }
-else {
-  echo "sorry, not sure what to do.";
-}
+
 
 ?>
 

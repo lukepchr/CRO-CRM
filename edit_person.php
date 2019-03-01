@@ -3,7 +3,7 @@
 
 <div id="form_container" class="container">
 <h2>Editing <span id="person">a person</span></h2>
-<form name = "edit_person" method="POST" action = "person_changed.php?action=edit&id=<?php echo $id; ?>">
+<form name = "edit_person" method="POST" action = "all_people.php?action=edit&id=<?php echo $id; ?>">
   <div class="form-row">
     <div class="form-group col-md-6">
     <label for ="firstname">First name:</label>

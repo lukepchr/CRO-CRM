@@ -48,7 +48,7 @@ if($result->num_rows>0){ // it's great but next time use the right method.
     </div>
 
     <div class="form-group col">
-    <label for ="accountcode">Account_code:</label>
+    <label for ="accountcode">Account code:</label>
     <input name="accountcode"  value="<?php echo $accountcode;?>"  class="form-control" id="accountcode" type="text" required>
     </div>
   </div>

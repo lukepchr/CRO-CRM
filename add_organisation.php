@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-group col">
-        <label for ="accountcode">Account_code:</label>
+        <label for ="accountcode">Account code:</label>
         <input name="accountcode" class="form-control" id="accountcode" type="text" required>
         </div>
       </div>

@@ -35,12 +35,10 @@ die("connection failed: " . $connection->connect_error);
 - add_person.php - forms to add new person; That's a partial to go into `all_people.php`
 - edit_organisation.php - edit existing organisation, retrieving the old record first to pre-fill the fields
 - edit_person.php - edit existing employee, retrieving the old record first to pre-fill the fields. Also a partial for `all_people.php`.
-- index.php - the dashboard with the shoutbox and "newsfeed", all the important info / stats will go here later.
+- index.php - the dashboard with the shout box and "newsfeed", all the important info / stats will go here later.
 - login.php is asking for username and password, comparing them with the database record and setting up a session. Other pages check a variable for access control.
-- person_changed.php - after editing a person => a page to receive POST/GET requests and turn them into SQL queries
-- org_changes.php - after editing a company => a page to receive POST/GET requests and turn them into SQL queries
-- all_organisations.php - summary of all organisations sorted alphabetically; edit/delete
-- all_people.php - sumary of all people alphabetically; edit/delete
+- all_organisations.php - summary of all organisations sorted alphabetically; edit/delete. After changing a record, receives the request in POST/GET and makes change to the MySQL database.
+- all_people.php - summary of all people alphabetically; edit/delete. After changing a record, receives the request in POST/GET and makes change to the MySQL database.
 - organisation_profile.php is a little dashboard for each organisation
 - results.php is the list of companies or people who matched the search query.
 
