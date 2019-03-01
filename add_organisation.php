@@ -2,7 +2,7 @@
 
   <h2>Add new organisation...</h2>
 
-  <form name = "new_organisation" method="POST" action = "org_changed.php?action=add">
+  <form name = "new_organisation" method="POST" action = "all_organisations.php?action=add">
     <div id="form_container">
 
       <div class="form-row">

@@ -38,7 +38,7 @@ if($result->num_rows>0){ // it's great but next time use the right method.
 ?>
 
 
-<form name = "edit_person" method="POST" action = "org_changed.php?action=edit&id=<?php echo $id; ?>">
+<form name = "edit_person" method="POST" action = "all_organisations.php?action=edit&id=<?php echo $id; ?>">
 <div id="form_container">
 
   <div class="form-row">
