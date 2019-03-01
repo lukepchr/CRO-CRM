@@ -2,10 +2,12 @@
   <?php
         require 'database.php';
         ?>
+
+<div class="container">
 <h2>Modify <span id="organisation">organisation details</span>...</h2>
 
 
-<div class="container">
+
 <!-- GET the account code to look for -->
 
 <?php
@@ -81,10 +83,8 @@ if($result->num_rows>0){ // it's great but next time use the right method.
 
 </div>
 
-<div class= "row mt-3">
 <input type="submit" class="btn btn-primary" id="button">
-<a href="all_organisations.php" class="btn btn-warning" id="button">Cancel</a></div>
+<a href="all_organisations.php" class="btn btn-secondary ml-1" id="button">Cancel</a></div>
 
 </form>
-</div>
 </div>

@@ -45,8 +45,7 @@
         </div>
       </div>
 
-      <div class= "row mt-3">
-      <input type="submit" class="btn btn-primary" id="button"></div>
+      <input type="submit" class="btn btn-primary" id="button">
 
     </form>
 </div>

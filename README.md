@@ -10,11 +10,12 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 - Companies are identified by an account code (8 letters/numbers) which is usually handy for invoicing purposes, although when adding a new employee, company can be picked by a name from a list.
 - Post "global" messages to appear in the main dashboard.
 - Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile
+- SQL Injection-proof
 
 ### Structure:
 
 - header.php libraries included in <head> tags on each page etc.
-- logo.php is a partial; the top of each page with logo and menu.
+- top.php is a partial; the top of each page with logo and menu.
 - database.php - the mySQLi connection
 
 ```
@@ -36,8 +37,8 @@ die("connection failed: " . $connection->connect_error);
 - edit_person.php - edit existing employee, retrieving the old record first to pre-fill the fields. Also a partial for `all_people.php`.
 - index.php - the dashboard with the shoutbox and "newsfeed", all the important info / stats will go here later.
 - login.php is asking for username and password, comparing them with the database record and setting up a session. Other pages check a variable for access control.
-- person_changed.php - after editing a person => a page to receive POST/GET requests and turn them into mySQLi queries
-- org_changes.php - after editing a company => a page to receive POST/GET requests and turn them into mySQLi queries
+- person_changed.php - after editing a person => a page to receive POST/GET requests and turn them into SQL queries
+- org_changes.php - after editing a company => a page to receive POST/GET requests and turn them into SQL queries
 - all_organisations.php - summary of all organisations sorted alphabetically; edit/delete
 - all_people.php - sumary of all people alphabetically; edit/delete
 - organisation_profile.php is a little dashboard for each organisation
@@ -45,7 +46,7 @@ die("connection failed: " . $connection->connect_error);
 
 
 ### Still to do:
-- various levels of permissions
+- script injection
 - pages layout
 - dashboard
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.

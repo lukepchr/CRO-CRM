@@ -48,7 +48,7 @@ if(!$_SESSION[active]){
 
 
   ?>
-<a href="add_organisation.php"><button class="btn btn-primary mt-2">Add a new organisation</button></a>
+
 </div>
 
 </div>

@@ -53,9 +53,7 @@
 <input name="phone" value="<?php echo $phone ?>" class="form-control" id="phone" type="number" required>
 </div></div>
 <input type="submit" class="btn btn-primary" id="button">
-<a href="all_people.php"<button class="btn btn-warning" id="clear form">Cancel</button></a>
-
-
+<a href="all_people.php"<button class="btn btn-secondary">Cancel</button></a>
 
 
 </form>

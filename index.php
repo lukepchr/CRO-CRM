@@ -100,11 +100,12 @@ include 'header.php';
 
 <div id="mainfeed" class="container col-md-5 float-left">
 
-  <div class="form-group">
+  <div class="form-group clearfix">
       <form id="newpost" class="form-group" action="index.php" method="POST">
+
       <textarea rows="3" cols="50" name="post" class="form-control" required ></textarea>
 
-      <button type="submit" class="btn btn-primary mt-1 mb-3 align-right"><i class="fas fa-paper-plane"></i> Send</button>
+      <button type="submit" class="btn btn-primary mt-1 mb-3 float-right"><i class="fas fa-paper-plane"></i> Send</button>
   </div>
 
 
