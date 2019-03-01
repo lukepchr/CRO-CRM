@@ -7,9 +7,9 @@
 
 <?php
 $usr= $_SESSION['user'];
-echo "<div><small><kbd>  Hello world from ".$_SERVER['SERVER_SOFTWARE']."</kbd></small></div>";
+echo "<div class='ml-1'><small><kbd>  Hello world from ".$_SERVER['SERVER_SOFTWARE']."</kbd></small></div>";
 if($usr){
-echo "<kbd>Logged in as $usr</kbd> <kbd class='ml-1'><a href='login.php?action=bye'> <i class='fas fa-sign-out-alt'></i> log out </a> </kbd>";
+echo "<small><kbd class='ml-1'>Logged in as $usr</kbd> <kbd class='ml-1'><a href='login.php?action=bye'> <i class='fas fa-sign-out-alt'></i> log out </a> </kbd></small>";
 }
 ?>
 

@@ -14,16 +14,17 @@ if(!$_SESSION[active]){
 <?php
 
 if($_GET['id']){
-$id = $_GET['id'];
-
 
 require 'database.php';
+$id = $connection->real_escape_string($_GET['id']);
+
+
 
 $sql = "SELECT * FROM person WHERE id =" . $id;
 
 $result = $connection->query($sql);
 
-if($result->num_rows>0){ // it's great but next time use the right method.
+if($result){
   while($row = $result->fetch_assoc()){
 
     $firstname = $row["first_name"];

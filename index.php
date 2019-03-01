@@ -45,14 +45,21 @@ include 'header.php';
   if ($sql<>""){
 
   if($connection->query($sql)){
-  echo "<div class='alert-success position-fixed'>Success, a message was $note. <small>($sql)</small></div>";
+  echo "<div id='alert' class='alert-success position-fixed'>Success, a message was $note. <small>($sql)</small></div>";
   $success=true;
   }
   else{
   echo $connection->error;
-  echo "<div class='alert-warning position-fixed'>Message not $note! <small>($sql)</small></div>";
+  echo "<div id='alert' class='alert-warning position-fixed'>Message not $note! <small>($sql)</small></div>";
   $success=false;
   }
+
+  // little script to delete the notification.
+  echo '
+    <script>
+      $("#alert").fadeOut(3000);
+    </script>
+  ';
 
   }
 
@@ -85,7 +92,7 @@ include 'header.php';
         else {
           echo "morning";
         }
-         ?>, it's <?php echo $now = date("l, jS \of F"); ?>. How about if you do some work now?
+         ?>, welcome to the news feed. It's <?php echo $now = date("l, jS \of F"); ?>.
           </p>
         </div>
 
