@@ -12,8 +12,9 @@
         </div>
 
         <div class="form-group col">
-        <label for ="accountcode">Account code:</label>
-        <input name="accountcode" class="form-control" id="accountcode" type="text" required>
+        <label for ="accountcode">Account code: <small>(don't use space)</small></label>
+
+        <input name="accountcode" class="form-control" id="accountcode" type="text" required pattern="\S+">
         </div>
       </div>
 
