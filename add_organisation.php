@@ -49,3 +49,42 @@
 
     </form>
 </div>
+
+<script>
+let deSpacer = (input) => {
+  let spaceIndex = input.indexOf(" ");
+  if(spaceIndex != -1){
+  var ary = [];
+
+    for(let a=0; a < input.length; a++){
+      if(a!=spaceIndex){
+      ary.push(input[a]);
+    }
+    else{
+    ary.push(input[a+1]);
+    }
+
+
+  }
+  return deSpacer(ary.join(""));
+  }
+  else{
+    return input;
+}
+}
+// end of declaration.
+
+
+$(document).ready(function(){
+
+$("#accountname").on("keydown",function(){
+let string = $("#accountname").val();
+string = string.toUpperCase().substring(0,8);
+$("#accountcode").val(deSpacer(string));
+
+});
+
+});
+
+
+</script>

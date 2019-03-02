@@ -27,7 +27,7 @@ include 'database.php'; ?>
 </div>
 
 <div id="form_container" class="row">
-      <div id="details" class="col-2 ml-5" style="overflow-wrap: break-word; text-align: justify; margin-right: 10px;">
+      <div id="details" class="col-md-2 ml-5" style="overflow-wrap: break-word; text-align: justify; margin-right: 10px;">
       <h3>Details</h3>
 
         <?php
@@ -50,7 +50,7 @@ include 'database.php'; ?>
       echo $row[postcode] . "<br><hr>";
       echo '<div class="container mb-2"><i class="fas fa-globe-europe"></i> '.$row[website] . "<br>";
       echo '<i class="fas fa-phone"></i> '.$row[phone] . "<br></div>";
-      echo "<a href='edit_organisation?id=".$row[id]."' class='btn btn-block btn-outline-success my-2 my-sm-0'>
+      echo "<a href='all_organisations?id=".$row[id]."' class='btn btn-block btn-outline-success my-2 my-sm-0'>
       Edit</a>";
           }
           else {
@@ -61,7 +61,7 @@ include 'database.php'; ?>
       ?>
     </div>
 
-    <div id="employees" class="col">
+    <div id="employees" class="col-md-3">
 <h3>Employees</h3>
 <?php
 
@@ -74,7 +74,7 @@ if ($resultpeople->num_rows>0){
     echo "<div style='margin-bottom: 10px'>";
     echo $row["first_name"]." ";
     echo $row["last_name"]. " (" . $row["position"] . "),<br><small><i>e-mail:</i> " . $row['email'] ." <i>phone:</i> " . $row['phone']. "</small>";
-    echo " <small><a href='edit_person.php?id=" . $row["id"] . "'>[edit]</a></small>";
+    echo " <small><a href='all_people.php?id=" . $row["id"] . "'>[edit]</a></small>";
     echo "</div>";
   }
 }
@@ -84,7 +84,7 @@ else {
 ?> </div>
 
 
-  <div id="allposts"  class="col">
+  <div id="allposts"  class="col-md-6">
 
 
 <div id="shoutbox" class="container">

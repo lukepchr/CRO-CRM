@@ -44,7 +44,8 @@ die("connection failed: " . $connection->connect_error);
 
 
 ### Still to do:
-- script injection
+- script injection-proofing
+- standardised notifications
 - pages layout
 - dashboard
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
