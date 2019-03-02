@@ -1,5 +1,4 @@
-<?php session_start();
-?>
+<?php if (session_status() == PHP_SESSION_NONE){session_start();}?>
 <!doctype html>
 <html lang="en">
 <header>
@@ -8,12 +7,12 @@ include 'header.php';
 ?>
 </header>
 
-<body>
+<body class="bg-light">
 
 <div id="main">
 
   <?php
-    if ($_GET['action']=="bye"){
+    if (isset($_GET['action'])){
       session_destroy ();
 
       echo
@@ -23,16 +22,15 @@ include 'header.php';
         }
 else {
 
-
     include 'database.php';
+    if(isset($_POST['login']) && isset($_POST['password'])){
     $login = $connection->real_escape_string($_POST['login']);
     $password = $connection->real_escape_string($_POST['password']);
 
-    if($login AND $password){
     // check login and password with the database.
     $sql = "SELECT * FROM user WHERE user = '$login';";
 
-    if(!$connection->query($sql)->fetch_object()->user)
+    if(!isset($connection->query($sql)->fetch_object()->user))
       {
         echo
             '<div class="alert alert-warning" role="alert">
@@ -43,9 +41,9 @@ else {
       else{
         $sql = "SELECT * FROM user WHERE user = '$login' AND password = '$password'";
 
-        if($connection->query($sql)->fetch_object()->user){
+        if(isset($connection->query($sql)->fetch_object()->user)){
 
-          $_SESSION['active'] = 'true';
+          $_SESSION['active'] = true;
           $_SESSION['user']= $login;
           include 'top.php';
           echo
@@ -69,6 +67,7 @@ else {
             }
             $connection->close();
           }
+
       }
 
 
@@ -88,14 +87,12 @@ echo
   </div>
 
 
-<div class="container col-md-2 center-block mx-6">
+<div class="container col-md-3 center-block mx-6 card p-5 ">
   <picture>
     <img src="https://localhost/CRM/crow.png" class="img-fluid max-width: 50%" alt="CRO logo">
   </picture>
-</div>
 
-  <div class="container col-md-2 align-center">
-    <form action="index.php" method="POST">
+    <form action="index.php" method="POST" id="form">
       <div class="col">
 
 <div class= "form-group">
@@ -114,4 +111,5 @@ echo
 
 </div>
 </body>
+
 </html>

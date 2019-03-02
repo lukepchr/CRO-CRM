@@ -1,5 +1,6 @@
-<?php session_start();
-if(!$_SESSION[active]){
+<?php
+if (session_status() == PHP_SESSION_NONE){session_start();}
+if(!isset($_SESSION['active'])){
   include 'login.php';
   die();
 }?>
@@ -14,11 +15,19 @@ if(!$_SESSION[active]){
 include 'header.php';
 
   require 'database.php';
+if(isset($_POST["post"])){
+
   $message = $_POST["post"];
-  $keepcode = $_GET["account_code"];
-  $return = $_GET["return"];
+
+  if(isset($_GET["accountcode"])&& isset($_GET["return"])){
+    $keepcode = $_GET["account_code"];
+    $return = $_GET["return"];
+}
+
   $message = $connection->real_escape_string ($message);
+}
   $timestamp = date("Y-m-d, h:i");
+
  ?>
 </head>
 
@@ -27,22 +36,32 @@ include 'header.php';
 <?php
 
 
-  if($message<>"")
+
+  if(isset($message))
   {
+    if(isset($keepcode)){
     $sql = "INSERT INTO posts ".
     "(memo, time_created, account_code) ".
     "VALUES ('$message','$timestamp','$keepcode');";
+  }
+  else {
+    $sql = "INSERT INTO posts ".
+    "(memo, time_created) ".
+    "VALUES ('$message','$timestamp');";
+  }
     $note = "posted";
 
   }
 
+if(isset($_GET["action"])){
   if($_GET["action"]== "delete"){
     $id = $_GET['id'];
     $sql = "DELETE FROM posts WHERE id = '$id'";
     $note= "removed";
   }
+}
 
-  if ($sql<>""){
+  if (isset($sql)){
 
   if($connection->query($sql)){
   echo "<div id='alert' class='alert-success position-fixed'>Success, a message was $note. <small>($sql)</small></div>";
@@ -63,7 +82,7 @@ include 'header.php';
 
   }
 
-  if ($_GET["return"]){
+  if (isset($_GET["return"])){
     echo "<script>
       window.location.replace('organisation_profile.php?id=$return&note=$note&success=$success');
       </script>";
