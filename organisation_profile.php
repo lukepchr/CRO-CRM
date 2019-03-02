@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -84,16 +85,15 @@ else {
 ?> </div>
 
 
-  <div id="allposts"  class="col-md-6">
+  <div id="allposts"  class="col-md-3">
 
 
-<div id="shoutbox" class="container">
+<div id="shoutbox" class="container mb-2">
     <form id="newpost" action='index.php?<?php echo"
     return=$keepid&account_code=$keepcode"?>' method="POST">
-    <h3>News feed</h3><div id="textbox"><textarea rows="5" cols="50"
-      name="post" placeholder="Write a note here"></textarea><br>
-    <input type="submit" class="btn btn-outline-success my-2 my-sm-0"
-    style="display: inline; align: right;" value="Send"></div></form></div>
+    <h3>News feed</h3><div id="textbox" class="clearfix"><textarea rows="5" cols="51"
+      name="post" placeholder="Write a note here" required></textarea><br>
+    <button type="submit" class="btn btn-primary mt-1 mb-3 float-right" value="Send"><i class="fas fa-paper-plane"></i> Send</button></div></form></div>
 
 
 
