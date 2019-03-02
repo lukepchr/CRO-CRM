@@ -4,4 +4,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.ico">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>CRO Customer Relationships Organiser</title>
+<meta charset = "UTF-8">
+<meta name = "description" content = "CRO CRM is a full stack project in PHP, JS and Bootstrap design for account managers and sales teams to share and keep important business information">
+<meta name = "keywords" content = "CRM, Junior Full Stack Developer, Web Design, PHP, CSS, HTML, IT">
+<meta name = "author" content = "Luke Pochron">
