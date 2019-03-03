@@ -84,20 +84,20 @@ if ($resultpeople->num_rows>0){
   }
 }
 else {
-  echo 'No records yet. <a href="all_people.php" class="btn btn-secondary mt-2"><i class="fas fa-male"></i> Add a new person...</a>';
+  echo 'No records yet. <a href="all_people.php" class="btn btn-secondary mt-2 btn-block"><i class="fas fa-male"></i> Add a new person...</a>';
 }
 ?> </div>
 
 
-  <div id="allposts"  class="col-md-3">
+  <div id="allposts"  class="col-md-4">
 
 
 <div id="shoutbox" class="container">
     <form id="newpost" action='index.php?<?php echo"
     return=$keepid&account_code=$keepcode"?>' method="POST">
-    <h3>News feed</h3><div id="textbox" class="clearfix"><textarea rows="5" cols="51"
-      name="post" placeholder="Write a note here" required></textarea>
-    <button type="submit" class="btn btn-primary mt-1" value="Send">
+    <h3>News feed</h3><div id="textbox" class="clearfix"><textarea rows="5"
+      class="w-100" name="post" placeholder="Write a note here" required></textarea>
+    <button type="submit" class="btn btn-primary mt-1 mb-3" value="Send">
       <i class="fas fa-paper-plane"></i> Send</button></div>
     </form>
 </div>

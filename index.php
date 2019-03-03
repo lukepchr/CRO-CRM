@@ -19,10 +19,13 @@ if(isset($_POST["post"])){
 
   $message = $_POST["post"];
 
-  if(isset($_GET["accountcode"])&& isset($_GET["return"])){
+  if(isset($_GET["account_code"])){
     $keepcode = $_GET["account_code"];
-    $return = $_GET["return"];
 }
+if(isset($_GET["return"])){
+    $return = $_GET["return"];
+  }
+
 
   $message = $connection->real_escape_string ($message);
 }
@@ -42,12 +45,12 @@ if(isset($_POST["post"])){
     if(isset($keepcode)){
     $sql = "INSERT INTO posts ".
     "(memo, time_created, account_code) ".
-    "VALUES ('$message','$timestamp','$keepcode');";
+    "VALUES ('$message', STR_TO_DATE('$timestamp', '%Y-%m-%d, %h:%i'),'$keepcode');";
   }
   else {
     $sql = "INSERT INTO posts ".
     "(memo, time_created) ".
-    "VALUES ('$message','$timestamp');";
+    "VALUES ('$message',STR_TO_DATE('$timestamp', '%Y-%m-%d, %h:%i'));";
   }
     $note = "posted";
 
