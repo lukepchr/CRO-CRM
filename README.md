@@ -1,7 +1,5 @@
 # CRO
-CRO is a CRM system or in this case, Customer Relationships Organiser application for sales teams or account managers to store information regarding their work with customers.
-
-This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. I run it on Raspberry Pi accessed through SSH and FTP to resemble real deployment environment although when it's fully finished, I wish to make it available to others and e.g. include installer as in CMS systems and documentation.
+Customer Relationships Management tool for sales teams and account managers to store and share information regarding their business contacts. Built using PHP, MySQL, Bootstrap and JavaScript. It can be accessed by multiple users with different passwords and is secured against SQL-injection attacks.
 
 ### The core functionality is already working:
 - Add, view, modify and remove company profiles with contact details, notes and employees
