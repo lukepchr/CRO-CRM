@@ -55,7 +55,7 @@ include 'database.php'; ?>
       echo $row['postcode'] . "<br><hr>";
       echo '<div class="container mb-2"><i class="fas fa-globe-europe"></i> '.$row['website'] . "<br>";
       echo '<i class="fas fa-phone"></i> '.$row['phone'] . "<br></div>";
-      echo "<a href='all_organisations?id=".$row['id']."' class='btn btn-block btn-secondary my-2 my-sm-0'>
+      echo "<a href='all_organisations.php?id=".$row['id']."' class='btn btn-block btn-secondary my-2 my-sm-0'>
       <i class='fas fa-pencil-alt'></i> Edit</a>";
           }
           else {
