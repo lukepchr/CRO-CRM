@@ -14,14 +14,29 @@ Customer Relationships Management tool for sales teams and account managers to s
 
 ### Structure:
 
-- header.php libraries included in <head> tags on each page etc.
-- top.php is a partial; the top of each page with logo and menu.
-- database.php - the mySQLi connection
+#### Main Pages:
+- index.php - the dashboard with the shout box and "newsfeed", all the important info / stats will go here later.
+- login.php is asking for username and password, comparing them with the database record and setting up a session. Other pages check a variable for access control.
+- all_organisations.php - summary of all organisations sorted alphabetically; edit/delete. After changing a record, receives the request in POST/GET and makes change to the MySQL database.
+- all_people.php - summary of all people alphabetically; edit/delete. After changing a record, receives the request in POST/GET and makes change to the MySQL database.
+- organisation_profile.php is a little dashboard for each organisation
+- results.php is the list of companies or people who matched the search query.
+
+#### Partials:
+- top.php - the logo and menu to be added on top of each page.
+- add_organisation.php - forms to add new company
+- add_person.php - forms to add new person; That's a partial to go into `all_people.php`
+- edit_organisation.php - edit existing organisation, retrieving the old record first to pre-fill the fields
+- edit_person.php - edit existing employee, retrieving the old record first to pre-fill the fields.
+
+#### Under the hood:
+- header.php libraries and meta tags to be included on the top of each page
+- database.php - the mySQLi connection variables. I didn't include it in this repository for obvious reasons, so please see exact template below:
 
 ```
 $servername = "127.0.0.1";
 $username = "root";
-$password = $somepassword;
+$password = "password";
 $dbname = "mydb";
 
 $connection = new mysqli ($servername, $username, $password, $dbname);
@@ -29,18 +44,6 @@ if ($connection->connect_error){
 die("connection failed: " . $connection->connect_error);
 }
 ```
-
-
-- add_organisation.php - forms to add new company
-- add_person.php - forms to add new person; That's a partial to go into `all_people.php`
-- edit_organisation.php - edit existing organisation, retrieving the old record first to pre-fill the fields
-- edit_person.php - edit existing employee, retrieving the old record first to pre-fill the fields. Also a partial for `all_people.php`.
-- index.php - the dashboard with the shout box and "newsfeed", all the important info / stats will go here later.
-- login.php is asking for username and password, comparing them with the database record and setting up a session. Other pages check a variable for access control.
-- all_organisations.php - summary of all organisations sorted alphabetically; edit/delete. After changing a record, receives the request in POST/GET and makes change to the MySQL database.
-- all_people.php - summary of all people alphabetically; edit/delete. After changing a record, receives the request in POST/GET and makes change to the MySQL database.
-- organisation_profile.php is a little dashboard for each organisation
-- results.php is the list of companies or people who matched the search query.
 
 
 ### Still to do:
