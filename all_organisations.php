@@ -1,5 +1,5 @@
 <?php session_start();
-if(!$_SESSION[active]){
+if(!$_SESSION['active']){
   include 'login.php';
   die();
 }?>
@@ -15,7 +15,7 @@ include 'header.php';
 
 include 'database.php';
 
-if($_POST['accountname'] && $_POST['accountcode']){
+if(isset($_POST['accountname']) && isset($_POST['accountcode'])){
 $accountname = $connection->real_escape_string($_POST['accountname']);
 $address = $connection->real_escape_string($_POST['address']);
 $city = $connection->real_escape_string($_POST['city']);
@@ -26,9 +26,18 @@ $accountcode = $connection->real_escape_string($_POST['accountcode']);
 
 }
 
+if(isset($_GET['action'])){
 $action = $connection->real_escape_string($_GET['action']);
+}
+else {
+  $action = NULL;
+}
 if($action!="add"){
+
+  if(isset($_GET["id"])){
 $id = $connection->real_escape_string($_GET["id"]);
+}
+
 }
 
 if ($action == "add"){
@@ -148,7 +157,7 @@ elseif($action== "delete"){
 
 
 <?php
-if (!$changes && $_GET['id']){
+if (!isset($changes) && isset($_GET['id'])){
   include 'edit_organisation.php';
 }
 else{

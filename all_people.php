@@ -1,5 +1,5 @@
 <?php session_start();
-if(!$_SESSION[active]){
+if(!$_SESSION['active']){
   include 'login.php';
   die();
 }?>
@@ -10,17 +10,27 @@ if(!$_SESSION[active]){
 require 'database.php';
 
 // pick up all the inputs from POST/GET and escape the strings.
+if(isset($_POST['firstname'], $_POST['lastname'], $_POST['accountcode'],
+$_POST['position'] , $_POST['email'] , $_POST['phone'])){
 $firstname = $connection->real_escape_string ($_POST['firstname']);
 $lastname = $connection->real_escape_string ($_POST['lastname']);
 $accountcode = $connection->real_escape_string ($_POST['accountcode']);
 $position = $connection->real_escape_string ($_POST['position']);
 $email = $connection->real_escape_string ($_POST['email']);
 $phone = $connection->real_escape_string ($_POST['phone']);
+}
+
+
+if(isset($_GET['id'])){
+
+  $id = $connection->real_escape_string ($_GET["id"]);
+}
+
+if(isset($_GET['action'])){
 $action = $connection->real_escape_string ($_GET['action']);
-$id = $connection->real_escape_string ($_GET["id"]);
+
 
 if ($action == "add"){
-
 
 $sql = "INSERT INTO person (first_name, last_name, account_code, position, email, phone)
 VALUES ('$firstname', '$lastname', '$accountcode', '$position', '$email', '$phone')";
@@ -77,11 +87,12 @@ else
   $connection->close();
 }
 }
+} // end of the action dependant block
 
 // begin rendering of the data on the website
 
 
-if($_GET['id']){
+if(isset($_GET['id'])){
 
 require 'database.php';
 $id = $connection->real_escape_string($_GET['id']);
@@ -137,7 +148,10 @@ if($result){
 
       $sql = "SELECT account_name FROM account WHERE account_code ='" . $row['account_code']. "';";
 
-   $employer = $connection->query($sql)->fetch_object()->account_name;
+
+    if (isset($connection->query($sql)->fetch_object()->account_name)){
+      $employer = $connection->query($sql)->fetch_object()->account_name;
+    }
 
 echo "<small class='text-muted'>";
 
@@ -173,7 +187,7 @@ echo " <a href=all_people.php?action=delete&id=".$row["id"]." class='removal'>
 
 
 <?php
-if (!$changes && $_GET['id']){
+if (isset($_GET['id'])){
   include 'edit_person.php';
 }
 else{

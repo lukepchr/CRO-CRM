@@ -9,11 +9,15 @@
 
 
 <?php
+
+if(isset($_GET['success'])){
 $success = $_GET['success'];
+}
+if(isset($_GET['note'])){
 $note = $_GET['note'];
+}
 
-
-if($note){
+if(isset($note)){
   if($success) echo "<div class='alert-success' id='overlay'>Success, a message was $note. </div>";
   else echo "<div class='alert-warning' id='overlay'>Error! Message not $note!</div>";
 }
@@ -22,7 +26,7 @@ if($note){
 <div id="main">
 <?php include "top.php";
 include 'database.php'; ?>
-<div class="alert alert-info" role="alert">
+<div class="alert alert-primary" role="alert">
   <h4 class="alert-heading"><span id="org">Selected</span> <small>News & organisation profile</small></h4>
   <p></p>
 </div>
@@ -41,18 +45,18 @@ include 'database.php'; ?>
         $row = $result->fetch_assoc();
 
 
-      $keepcode = $row[account_code];
-      $name = $row[account_name];
-      $keepid=$row[id];
+      $keepcode = $row['account_code'];
+      $name = $row['account_name'];
+      $keepid=$row['id'];
       echo "<code>". $keepcode . "</code><br><b>";
       echo $name . "</b><br>";
-      echo $row[address] . "<br>";
-      echo $row[city] . ", ";
-      echo $row[postcode] . "<br><hr>";
-      echo '<div class="container mb-2"><i class="fas fa-globe-europe"></i> '.$row[website] . "<br>";
-      echo '<i class="fas fa-phone"></i> '.$row[phone] . "<br></div>";
-      echo "<a href='all_organisations?id=".$row[id]."' class='btn btn-block btn-outline-success my-2 my-sm-0'>
-      Edit</a>";
+      echo $row['address'] . "<br>";
+      echo $row['city'] . ", ";
+      echo $row['postcode'] . "<br><hr>";
+      echo '<div class="container mb-2"><i class="fas fa-globe-europe"></i> '.$row['website'] . "<br>";
+      echo '<i class="fas fa-phone"></i> '.$row['phone'] . "<br></div>";
+      echo "<a href='all_organisations?id=".$row['id']."' class='btn btn-block btn-secondary my-2 my-sm-0'>
+      <i class='fas fa-pencil-alt'></i> Edit</a>";
           }
           else {
             echo "error retrieving this result!";
@@ -75,12 +79,12 @@ if ($resultpeople->num_rows>0){
     echo "<div style='margin-bottom: 10px'>";
     echo $row["first_name"]." ";
     echo $row["last_name"]. " (" . $row["position"] . "),<br><small><i>e-mail:</i> " . $row['email'] ." <i>phone:</i> " . $row['phone']. "</small>";
-    echo " <small><a href='all_people.php?id=" . $row["id"] . "'>[edit]</a></small>";
+    echo " <small><a href='all_people.php?id=" . $row["id"] . "'><i class='fas fa-pencil-alt'></i></a></small>";
     echo "</div>";
   }
 }
 else {
-  echo "zero results.";
+  echo 'No records yet. <a href="all_people.php" class="btn btn-secondary mt-2"><i class="fas fa-male"></i> Add a new person...</a>';
 }
 ?> </div>
 
@@ -88,12 +92,15 @@ else {
   <div id="allposts"  class="col-md-3">
 
 
-<div id="shoutbox" class="container mb-2">
+<div id="shoutbox" class="container">
     <form id="newpost" action='index.php?<?php echo"
     return=$keepid&account_code=$keepcode"?>' method="POST">
     <h3>News feed</h3><div id="textbox" class="clearfix"><textarea rows="5" cols="51"
-      name="post" placeholder="Write a note here" required></textarea><br>
-    <button type="submit" class="btn btn-primary mt-1 mb-3 float-right" value="Send"><i class="fas fa-paper-plane"></i> Send</button></div></form></div>
+      name="post" placeholder="Write a note here" required></textarea>
+    <button type="submit" class="btn btn-primary mt-1" value="Send">
+      <i class="fas fa-paper-plane"></i> Send</button></div>
+    </form>
+</div>
 
 
 

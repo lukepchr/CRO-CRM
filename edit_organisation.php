@@ -12,7 +12,7 @@
 
 <?php
 
-$id = $_GET['id'];
+  $id = $_GET['id'];
 
 require 'database.php';
 
