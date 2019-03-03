@@ -10,6 +10,8 @@ This is my first Full Stack project. I decided to use PHP, mySQL and Bootstrap. 
 - Companies are identified by an account code (8 letters/numbers) which is usually handy for invoicing purposes, although when adding a new employee, company can be picked by a name from a list.
 - Post "global" messages to appear in the main dashboard.
 - Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile
+#### Security
+- Password-protected
 - SQL Injection-proof
 
 ### Structure:
