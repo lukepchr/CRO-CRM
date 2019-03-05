@@ -8,6 +8,7 @@ Customer Relationships Management tool for sales teams and account managers to s
 - Companies are identified by an account code (8 letters/numbers) which is usually handy for invoicing purposes, although when adding a new employee, company can be picked by a name from a list.
 - Post "global" messages to appear in the main dashboard.
 - Post messages relating companies that will appear both on the company profile and in the dashboard with a link to the company profile
+- Consistent notifications in JS/jQuery/CSS3 to inform of successful operations (or not) :) 
 #### Security
 - Password-protected
 - SQL Injection-proof
@@ -48,7 +49,6 @@ die("connection failed: " . $connection->connect_error);
 
 ### Still to do:
 - script injection-proofing
-- standardised notifications
 - pages layout
 - dashboard
 - personal to-do list for each user; the tasks would be linked to companies to show both on dashboard and under their accounts.
