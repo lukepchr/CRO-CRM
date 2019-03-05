@@ -67,21 +67,22 @@ if(isset($_GET["action"])){
   if (isset($sql)){
 
   if($connection->query($sql)){
-  echo "<div id='alert' class='alert-success position-fixed'>Success, a message was $note. <small>($sql)</small></div>";
+    if(isset($note)){
+  echo "<script>
+  $(document).ready(function(){
+  notify('Success, a message was $note.');
+});</script>";}
   $success=true;
   }
   else{
-  echo $connection->error;
-  echo "<div id='alert' class='alert-warning position-fixed'>Message not $note! <small>($sql)</small></div>";
+    if(isset($note)){
+  echo "<script>
+  $(document).ready(function(){
+  notify('Message not $note.');
+});</script>";}
   $success=false;
   }
 
-  // little script to delete the notification.
-  echo '
-    <script>
-      $("#alert").fadeOut(3000);
-    </script>
-  ';
 
   }
 

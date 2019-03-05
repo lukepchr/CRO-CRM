@@ -33,3 +33,9 @@ echo "<small><kbd class='ml-1'>Logged in as $usr</kbd> <kbd class='ml-1'><a href
 </ul>
 
 </nav>
+
+<!--- notification for js -->
+<div id="notification">
+<div id="shine"></div>
+  <div id="text">If you can see it, you didn't pass a value to the JS function!</div>
+</div>

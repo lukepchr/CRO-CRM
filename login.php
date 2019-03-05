@@ -9,16 +9,23 @@ include 'header.php';
 
 <body class="bg-light">
 
+  <!--- notification for js -->
+  <div id="notification">
+  <div id="shine"></div>
+    <div id="text">...</div>
+  </div>
+
+
 <div id="main">
 
   <?php
     if (isset($_GET['action'])){
+      echo "<script>
+      $(document).ready(function(){
+      notify('You have been logged out. Come again!');
+      });</script>";
       session_destroy ();
 
-      echo
-          '<div class="alert alert-warning" role="alert">
-          <h4 class="alert-heading">Log-in</h4>
-          <p>Logged out!</p></div>';
         }
 else {
 
@@ -32,10 +39,10 @@ else {
 
     if(!isset($connection->query($sql)->fetch_object()->user))
       {
-        echo
-            '<div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">Log-in</h4>
-            <p>User does not exist!</p>';
+        echo "<script>
+        $(document).ready(function(){
+        notify('This user does not exist...);
+        });</script>";
           }
 
       else{
@@ -45,25 +52,19 @@ else {
 
           $_SESSION['active'] = true;
           $_SESSION['user']= $login;
-          include 'top.php';
-          echo
-          '
-          <div class="alert alert-primary mt-6 display-block" role="alert">
-          <h4 class="alert-heading">Welcome!</h4>
-          <div>
-          <p>You are successfully logged in. Go to the index page to begin or choose a tab above.</p>
-
-          <a href="index.php" class="btn btn-primary">Ok</a>
-
-          </div>';
-              die();
+          include 'index.php';
+          echo "<script>
+          $(document).ready(function(){
+          notify('Welcome to CRO CRM. You have been successfully logged in.');
+          });</script>";
+          die();
             }
 
         else {
-          echo
-              '<div class="alert alert-warning" role="alert">
-              <h4 class="alert-heading">Log-in</h4>
-              <p>Incorrect password.</p>';
+          echo "<script>
+          $(document).ready(function(){
+          notify('Incorrect password!');
+          });</script>";
             }
             $connection->close();
           }
@@ -87,9 +88,9 @@ echo
   </div>
 
 
-<div class="container col-md-3 center-block mx-6 card p-5 ">
+<div class="container col-md-2 center-block mx-6 card p-3 mt-5">
   <picture>
-    <img src="https://localhost/CRM/crow.png" class="img-fluid max-width: 50%" alt="CRO logo">
+    <img src="https://localhost/CRM/crow.png" class="img-fluid max-width: 50% mt-4" alt="CRO logo">
   </picture>
 
     <form action="index.php" method="POST" id="form">
@@ -103,7 +104,7 @@ echo
         <label for="password">Password:</label>
         <input type="password"  class="col form-control" name= "password" autocomplete="current-password" required>
 </div>
-        <input type ="submit"  class="col form-control btn btn-primary" name="submit">
+        <input type ="submit"  class="col form-control btn btn-primary mt-4" name="submit">
       </div>
     </form>
 

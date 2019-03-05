@@ -36,13 +36,18 @@ $sql = "INSERT INTO person (first_name, last_name, account_code, position, email
 VALUES ('$firstname', '$lastname', '$accountcode', '$position', '$email', '$phone')";
 
 if( $connection->query($sql) === TRUE){
-echo "New record created successfully!";
+  echo "<script>
+  $(document).ready(function(){
+  notify('New record created.');
+  });</script>";
 $changes = true;
 }
 else
 {
-echo "Error: " . $sql . "<br>" . $connection->error;
-
+  echo "<script>
+  $(document).ready(function(){
+  notify('Error!');
+  });</script>";
 
 $connection->close();
 }
@@ -66,7 +71,10 @@ $sql6 = "UPDATE `person` SET `phone` = '$phone' WHERE `id` = $id;";
     $connection->query($sql4) === TRUE and
     $connection->query($sql5) === TRUE and
     $connection->query($sql6) === TRUE){
-  echo "Profile modified successfully!";
+      echo "<script>
+      $(document).ready(function(){
+      notify('Profile modified successfully.');
+      });</script>";
   $changes = true;
 }
 }
@@ -75,14 +83,19 @@ elseif($action == "delete"){
 $sql = "DELETE FROM person WHERE id = $id;";
 if($connection->query($sql)===TRUE)
 {
-  echo "Person deleted successfully.";
+  echo "<script>
+  $(document).ready(function(){
+  notify('Person profile deleted.');
+  });</script>";
   $changes = true;
 }
 
 else
 {
-  echo "Error: " . $sql . "<br>" . $connection->error;
-
+  echo "<script>
+  $(document).ready(function(){
+  notify('Sorry, something went wrong...');
+  });</script>";
 
   $connection->close();
 }
@@ -174,7 +187,7 @@ echo " <a href=all_people.php?action=delete&id=".$row["id"]." class='removal'>
 } // end of the associative fetch
   }
   else {
-    echo "zero results.";
+    echo "No results.";
   }
 
   $connection->close();

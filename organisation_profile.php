@@ -18,8 +18,8 @@ $note = $_GET['note'];
 }
 
 if(isset($note)){
-  if($success) echo "<div class='alert-success' id='overlay'>Success, a message was $note. </div>";
-  else echo "<div class='alert-warning' id='overlay'>Error! Message not $note!</div>";
+  if($success)   echo "<script> $(document).ready(function(){ notify('Success, a message was $note.');});</script>";
+  else   echo "<script>$(document).ready(function(){notify('Sorry, message not $note.');});</script>";
 }
 ?>
 <!---->
@@ -59,7 +59,10 @@ include 'database.php'; ?>
       <i class='fas fa-pencil-alt'></i> Edit</a>";
           }
           else {
-            echo "error retrieving this result!";
+            echo "<script>
+            $(document).ready(function(){
+            notify('Error retrieving this result...');
+            });</script>";
           }
 
 
@@ -84,7 +87,7 @@ if ($resultpeople->num_rows>0){
   }
 }
 else {
-  echo 'No records yet. <a href="all_people.php" class="btn btn-secondary mt-2 btn-block"><i class="fas fa-male"></i> Add a new person...</a>';
+  echo 'No records. <a href="all_people.php" class="btn btn-secondary mt-2 btn-block"><i class="fas fa-male"></i> Add a new person...</a>';
 }
 ?> </div>
 

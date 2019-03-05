@@ -48,11 +48,17 @@ $accountcode = $_POST['accountcode'];
 
     if( $connection->query($sql) === TRUE){
       $changes = true;
-      echo "New record created successfully!";
+      echo "<script>
+      $(document).ready(function(){
+      notify('New record created successfully!');
+      });</script>";
     }
     else
     {
-      echo "Error!" . $connection->error;
+      echo "<script>
+      $(document).ready(function(){
+      notify('Sorry, there was an error...');
+      });</script>";
 
       $connection->close();
     }
@@ -74,7 +80,10 @@ if($connection->query($sql1) === TRUE and
   $connection->query($sql5) === TRUE and
   $connection->query($sql6) === TRUE and
 $connection->query($sql7)=== TRUE){
-echo "Profile modified successfully!";
+  echo "<script>
+  $(document).ready(function(){
+  notify('Profile modified successfully.');
+  });</script>";
 $changes = true;
 }
 else{
@@ -88,7 +97,10 @@ elseif($action== "delete"){
   $sql = "DELETE FROM account WHERE id = '$id';";
     if($connection->query($sql)===TRUE)
     {
-      echo "Account deleted successfully.";
+      echo "<script>
+      $(document).ready(function(){
+      notify('The account was deleted.');
+      });</script>";
       $changes = true;
     }
 
@@ -140,7 +152,7 @@ elseif($action== "delete"){
     }
   }
   else {
-    echo "zero results.";
+    echo "No results.";
   }
 
 
