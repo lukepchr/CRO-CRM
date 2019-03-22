@@ -23,7 +23,8 @@ include 'header.php';
       echo "<script>
       $(document).ready(function(){
       notify('You have been logged out. Come again!');
-      });</script>";
+      });
+      </script>";
       session_destroy ();
 
         }

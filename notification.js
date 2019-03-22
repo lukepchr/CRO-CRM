@@ -3,15 +3,14 @@
 
 let lock = false;
 var notify = (string) => {
-   let n = $('#notification');
-   let t = $('#text');
-   if (!lock){
-      lock = true;
-      t.text(string);
-      n.slideDown('slow');
-      setTimeout(function(){
-        n.slideUp('slow', function(){lock = false;});
-
- }, 2500);
- }
+let n = $('#notification');
+let t = $('#text');
+if (!lock){
+  lock = true;
+  t.text(string);
+  n.slideDown('slow');
+  setTimeout(function(){
+    n.slideUp('slow', function(){lock = false;});
+}, 2500);
+}
 }
