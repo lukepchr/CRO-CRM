@@ -1,3 +1,5 @@
+<?php require 'header.php' ?>
+
 <style>
 
 body{
@@ -14,7 +16,7 @@ ul{
 }
 
 </style>
-
+This module will be a part of each personal profile in the CRM.
 
 <div class='card'>
 
@@ -28,11 +30,21 @@ ul{
     'do another thing',
     'call Michael regarding Jackson'
   );
-
+  $id = 0;
   foreach ($tasks as $task){
-      echo "<li><input type='checkbox'/> $task </li>";
+      echo "<li><input id='box$id' class='chkbx' type='checkbox'/> $task </li>";
+      $id++;
   }
   ?>
 
 </ul>
 </div>
+
+<script>
+
+$(".chkbx").click(function(){
+  let id = event.target.id;
+  console.log(`box clicked ${id}`);
+});
+
+</script>
