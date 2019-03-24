@@ -18,7 +18,7 @@ ul{
 </style>
 This module will be a part of each personal profile in the CRM.
 
-<div class='card'>
+<div class='card form-group'>
 
 <ul>
 
@@ -38,6 +38,12 @@ This module will be a part of each personal profile in the CRM.
   ?>
 
 </ul>
+<div class='container row w-100'>
+<textarea rows="4" class="p-2"></textarea>
+
+<button type="submit"class="btn btn-primary ml-1"><i class="fas fa-paper-plane"></i></button>
+
+</div>
 </div>
 
 <script>
